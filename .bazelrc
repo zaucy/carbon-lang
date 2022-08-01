@@ -2,8 +2,8 @@
 # Exceptions. See /LICENSE for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
-build --crosstool_top=@bazel_cc_toolchain
-build --host_crosstool_top=@bazel_cc_toolchain
+# build --crosstool_top=@bazel_cc_toolchain
+# build --host_crosstool_top=@bazel_cc_toolchain
 
 # Default to using a disk cache to minimize re-building LLVM and Clang which we
 # try to avoid updating too frequently to minimize rebuild cost. The location
@@ -68,6 +68,9 @@ build --test_env=ASAN_SYMBOLIZER_PATH
 # Linux and macOS this seems strictly better than the Bazel default of just
 # `en_US`.
 build --action_env=LANG=en_US.UTF-8
+
+# https://github.com/grailbio/bazel-toolchain
+build --incompatible_enable_cc_toolchain_resolution
 
 # Allow users to override any of the flags desired by importing a user-specific
 # RC file here if present.
